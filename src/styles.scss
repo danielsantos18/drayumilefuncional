@@ -1,1 +1,69 @@
+// ✅ Importa Bootstrap correctamente usando la nueva sintaxis
+@use "bootstrap/scss/bootstrap" as *;
+
+// 🎨 Tus variables y estilos personalizados
+@import "./app/assets/scss/variables";
+@import "./app/assets/scss/mixins";
+
+/* Theme variables (usadas en componentes) */
+:root {
+  --primary: #0d6efd;
+  --bg: #ffffff;
+  --nav-text: #ffffff;
+  --text: #000;
+  --muted: #6c757d;
+  //--card-bg: #DFD0B8;
+  //--button-bg: rgb(241, 225, 177);
+  --button-bg: rgb(130, 212, 242);
+  --contact-button-bg: #cc7a00;
+  --card-bg: rgb(130, 212, 242);
+  --footer-bg: #ececec;
+  --accent: #fff;
+
+}
+
+/* Dark theme overrides */
+.dark {
+  --primary: #0d6efd;
+  --bg: #222831;
+  --nav-text: #ffffff;
+  --text: #ffffff;
+  --muted: #98a2b3;
+  //--card-bg: #DFD0B8;
+  --contact-button-bg: #cc7a00;
+  //--button-bg: rgb(241, 225, 177);
+  --button-bg: rgb(130, 212, 242);
+  --card-bg: rgb(75, 170, 231);
+  --footer-bg: #393E46;
+  --accent: #fff;
+}
+
+/* Use CSS variables */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color .25s ease, color .25s ease;
+}
+
+/* Simple container card style */
+.app-card {
+  background-color: var(--card-bg);
+  border-radius: .6rem;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+}
+
+/* Utility for primary buttons using variable */
+.btn-primary-custom {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* small responsive tweaks */
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+
 /* You can add global styles to this file, and also import other style files */
