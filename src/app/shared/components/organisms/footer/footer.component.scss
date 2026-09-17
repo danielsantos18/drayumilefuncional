@@ -5,6 +5,7 @@
   background: var(--footer-bg);
   color: var(--text) !important;
   text-align: center;
+  transition: background-color $transition-base, color $transition-base;
 
   @include respond-to('md') {
     text-align: left;
@@ -13,6 +14,7 @@
   &__text,
   &__copyright {
     color: var(--text);
+    transition: color $transition-base;
   }
 
   &__link {

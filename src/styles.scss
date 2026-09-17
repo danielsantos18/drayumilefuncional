@@ -59,7 +59,14 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Transición suave global entre tema claro y tema oscuro */
+section,
+article,
+.card {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
 /* Utility for primary buttons using custom variable */

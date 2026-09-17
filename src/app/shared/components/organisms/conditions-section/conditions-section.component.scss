@@ -3,6 +3,7 @@
 
 .c-conditions-section {
   background-color: var(--bg);
+  transition: background-color $transition-base;
 
   &__grid {
     display: flex;

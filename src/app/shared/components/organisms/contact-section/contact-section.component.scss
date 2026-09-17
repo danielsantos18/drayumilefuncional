@@ -3,12 +3,14 @@
 
 .c-contact-section {
   background-color: var(--bg);
+  transition: background-color $transition-base;
 
   &__info-card,
   &__form-card {
     background-color: var(--footer-bg);
     color: var(--text);
     border-radius: 10px;
+    transition: background-color $transition-base, color $transition-base;
   }
 
   &__card-title {

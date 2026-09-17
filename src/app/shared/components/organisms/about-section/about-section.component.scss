@@ -15,17 +15,20 @@
   &__title,
   &__subtitle {
     color: var(--text);
+    transition: color $transition-base;
   }
 
   &__paragraph {
     color: var(--text);
     font-size: 1.05rem;
     line-height: 1.7;
+    transition: color $transition-base;
   }
 
   &__academic {
     &-heading {
       color: var(--text);
+      transition: color $transition-base;
     }
 
     &-gallery {

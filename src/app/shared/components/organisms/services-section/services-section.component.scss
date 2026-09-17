@@ -5,6 +5,7 @@
   background-color: var(--bg);
   position: relative;
   overflow: hidden;
+  transition: background-color $transition-base;
 
   &__labs {
     margin-top: 4.5rem;
@@ -19,6 +20,7 @@
       color: var(--text);
       font-size: 1.5rem;
       margin-bottom: 2rem;
+      transition: color $transition-base;
 
       @include respond-to('md') {
         font-size: 1.75rem;
