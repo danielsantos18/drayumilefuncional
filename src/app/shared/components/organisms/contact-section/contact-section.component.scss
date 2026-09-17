@@ -6,15 +6,46 @@
   transition: background-color $transition-base;
 
   &__info-card,
-  &__form-card {
+  &__form-card,
+  &__products-card {
     background-color: var(--footer-bg);
     color: var(--text);
-    border-radius: 10px;
+    border-radius: 14px;
     transition: background-color $transition-base, color $transition-base;
   }
 
   &__card-title {
     color: var(--text);
+    transition: color $transition-base;
+  }
+
+  &__products-desc {
+    color: var(--muted) !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: color $transition-base;
+  }
+
+  &__products-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: $radius-md;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  &__products-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform $transition-base;
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 
   &__map-wrapper {
