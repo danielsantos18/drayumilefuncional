@@ -1,0 +1,118 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-services-section {
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+
+  &__labs {
+    margin-top: 4.5rem;
+    padding-top: 2rem;
+
+    @include respond-to('md') {
+      margin-top: 6rem;
+      padding-top: 2.5rem;
+    }
+
+    &-title {
+      color: var(--text);
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+
+      @include respond-to('md') {
+        font-size: 1.75rem;
+        margin-bottom: 2.5rem;
+      }
+    }
+  }
+
+  // --- Infinite Marquee Carousel ---
+  &__marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1.25rem 0;
+
+    // Máscara de opacidad pura que se adapta automáticamente a cualquier fondo (claro u oscuro)
+    -webkit-mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 12%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 12%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  &__marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 1.5rem;
+    animation: marqueeScroll 30s linear infinite;
+    will-change: transform;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  // Card with standardized size for all logos
+  &__lab-card {
+    width: 180px;
+    height: 85px;
+    background-color: #ffffff;
+    border-radius: $radius-md;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    flex-shrink: 0;
+    transition: transform $transition-base, box-shadow $transition-base;
+    cursor: default;
+
+    @include respond-to('md') {
+      width: 200px;
+      height: 95px;
+      padding: 1rem 1.25rem;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  // Logo with uniform proportion and max bounds
+  &__lab-logo {
+    max-width: 135px;
+    max-height: 55px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform $transition-base;
+
+    @include respond-to('md') {
+      max-width: 155px;
+      max-height: 65px;
+    }
+  }
+}
+
+// Keyframe animation for infinite continuous scrolling
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

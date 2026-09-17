@@ -1,0 +1,26 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-contact-section {
+  background-color: var(--bg);
+
+  &__info-card,
+  &__form-card {
+    background-color: var(--footer-bg);
+    color: var(--text);
+    border-radius: 10px;
+  }
+
+  &__card-title {
+    color: var(--text);
+  }
+
+  &__map-wrapper {
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+

@@ -1,0 +1,35 @@
+<!-- External or anchor link -->
+<a
+  *ngIf="href"
+  [href]="href"
+  [target]="target || '_self'"
+  [rel]="target === '_blank' ? 'noopener noreferrer' : ''"
+  class="c-btn c-btn--{{ variant }} {{ customClass }}"
+  (click)="onClick($event)">
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</a>
+
+<!-- Angular Router link -->
+<a
+  *ngIf="routerLink && !href"
+  [routerLink]="routerLink"
+  class="c-btn c-btn--{{ variant }} {{ customClass }}"
+  (click)="onClick($event)">
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</a>
+
+<!-- Native button -->
+<button
+  *ngIf="!href && !routerLink"
+  [type]="type"
+  [disabled]="disabled"
+  class="c-btn c-btn--{{ variant }} {{ customClass }}"
+  (click)="onClick($event)">
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</button>
+
+<ng-template #buttonContent>
+  <span *ngIf="label" class="c-btn__label">{{ label }}</span>
+  <ng-content></ng-content>
+</ng-template>
+

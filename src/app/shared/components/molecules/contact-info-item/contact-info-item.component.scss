@@ -1,0 +1,40 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-contact-info-item {
+  &__icon {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    &--orange {
+      color: var(--contact-button-bg);
+    }
+
+    &--blue {
+      color: var(--primary);
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-semibold;
+    color: var(--text);
+  }
+
+  &__content {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--primary);
+      }
+    }
+  }
+}
+

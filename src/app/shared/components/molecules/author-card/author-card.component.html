@@ -1,0 +1,33 @@
+<div class="c-author-card card shadow-sm border-0">
+  <div class="c-author-card__body card-body text-center">
+    <img [src]="avatar" [alt]="name" class="c-author-card__avatar mb-3" />
+    <h5 class="c-author-card__name fw-bold mb-1">{{ name }}</h5>
+    <p class="c-author-card__role small mb-3">{{ role }}</p>
+    <p class="c-author-card__bio small mb-4">{{ bio }}</p>
+
+    <div class="c-author-card__socials d-flex justify-content-center gap-3">
+      <a
+        href="https://www.instagram.com/dra.yumileflorian/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="c-author-card__social-link c-author-card__social-link--instagram"
+        aria-label="Instagram">
+        <i class="bi bi-instagram fs-5"></i>
+      </a>
+      <a
+        href="https://wa.me/573227179819"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="c-author-card__social-link c-author-card__social-link--whatsapp"
+        aria-label="WhatsApp">
+        <i class="bi bi-whatsapp fs-5"></i>
+      </a>
+      <a
+        href="#home"
+        class="c-author-card__social-link c-author-card__social-link--website"
+        aria-label="Sitio web">
+        <i class="bi bi-globe fs-5"></i>
+      </a>
+    </div>
+  </div>
+</div>

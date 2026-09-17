@@ -1,0 +1,13 @@
+<div
+  class="c-academic-card shadow-sm rounded"
+  [attr.data-aos]="aosAnimation"
+  [attr.data-aos-delay]="delay ? delay : null">
+  <div class="c-academic-card__image-container">
+    <img
+      [src]="image"
+      [alt]="title"
+      class="c-academic-card__image img-fluid"
+      [class.c-academic-card__image--san-martin]="isSanMartin" />
+  </div>
+  <p class="c-academic-card__text fw-semibold small text-secondary" [innerHTML]="title"></p>
+</div>

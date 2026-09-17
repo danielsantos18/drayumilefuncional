@@ -1,0 +1,65 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-blog-article {
+  color: var(--text);
+  line-height: 1.7;
+
+  &__lead-title {
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  &__heading {
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    color: var(--text);
+    border-left: 4px solid var(--primary);
+    padding-left: 12px;
+    margin-bottom: 1rem;
+
+    @include respond-to('md') {
+      font-size: 1.35rem;
+    }
+  }
+
+  &__paragraph {
+    color: var(--text);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+
+    li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+
+      &::before {
+        content: "🌿";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__highlight {
+    background-color: rgba(13, 110, 253, 0.05);
+    border-left: 4px solid var(--primary);
+  }
+
+  &__references {
+    color: var(--text);
+    border-top: 1px solid var(--muted);
+  }
+}
+

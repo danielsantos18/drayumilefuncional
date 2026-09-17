@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { LandingPageComponent } from './core/pages/landing-page/landing-page.component';
-import { BlogListComponent } from './core/components/blog-list/blog-list.component';
-
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'blog', component: BlogListComponent },
+  { path: 'blog', component: BlogPageComponent },
+  { path: '**', redirectTo: '' }
 ];

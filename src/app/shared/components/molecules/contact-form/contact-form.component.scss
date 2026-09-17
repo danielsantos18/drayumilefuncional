@@ -1,0 +1,32 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-contact-form {
+  &__label {
+    font-weight: $font-weight-medium;
+    color: var(--text);
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    border-radius: $radius-sm;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+  }
+
+  &__textarea {
+    max-height: 200px;
+    overflow-y: auto;
+    resize: vertical;
+  }
+
+  &__check {
+    color: var(--text);
+  }
+}
+

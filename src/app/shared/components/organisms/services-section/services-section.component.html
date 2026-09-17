@@ -1,0 +1,37 @@
+<section id="services" class="c-services-section py-3 py-md-5" data-aos="fade-up">
+  <div class="container py-5">
+
+    <!-- Section Title -->
+    <app-section-title
+      title="Servicios Profesionales"
+      subtitle="Estoy aquí para ti de forma presencial o virtual. Juntos construiremos un camino hacia tu bienestar físico, emocional y mental, paso a paso y con propósito. Estas son las formas en las que puedo acompañarte en tu proceso de sanación.">
+    </app-section-title>
+
+    <!-- Services Grid -->
+    <div class="c-services-section__grid row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let service of services; let i = index" data-aos="fade-up" [attr.data-aos-delay]="100 + (i * 50)">
+        <app-service-card [service]="service"></app-service-card>
+      </div>
+    </div>
+
+    <!-- Associated Laboratories Carousel -->
+    <div class="c-services-section__labs text-center" data-aos="fade-up" data-aos-delay="200">
+      <h4 class="c-services-section__labs-title fw-bold mb-4">🔬 Laboratorios Asociados</h4>
+
+      <div class="c-services-section__marquee-wrapper">
+        <div class="c-services-section__marquee-track">
+          <div
+            *ngFor="let lab of marqueeLabs"
+            class="c-services-section__lab-card"
+            [attr.title]="lab.name">
+            <img
+              [src]="lab.image"
+              [alt]="lab.name"
+              class="c-services-section__lab-logo" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

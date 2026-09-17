@@ -1,0 +1,96 @@
+<section id="contact" class="c-contact-section pt-3 pt-md-4 pb-5" data-aos="fade-right">
+  <div class="container pt-2 pt-md-3 pb-5">
+
+    <app-section-title
+      title="Contáctame"
+      subtitle="&ldquo;Sanar es un camino: te acompaño a dar el siguiente paso.&rdquo;">
+    </app-section-title>
+
+    <div class="row g-5">
+      <!-- Information Column -->
+      <div class="col-lg-5">
+        <div class="c-contact-section__info-card card border-0 shadow-sm h-100">
+          <div class="card-body p-4 p-lg-5">
+            <h3 class="c-contact-section__card-title h4 fw-bold mb-4">Información de contacto</h3>
+
+            <!-- Address -->
+            <app-contact-info-item
+              iconClass="bi bi-geo-alt-fill"
+              title="Consultorio Principal"
+              iconVariant="orange">
+              <p class="mb-0">
+                Avenida calle 26 #69-76 Torre Tierra piso 13 oficina 1104<br>
+                Centro Empresarial Elemento<br>
+                Bogotá DC, Colombia
+              </p>
+            </app-contact-info-item>
+
+            <!-- Phones -->
+            <app-contact-info-item
+              iconClass="bi bi-telephone-fill"
+              title="Teléfonos"
+              iconVariant="blue">
+              <p class="mb-0"><a href="tel:+573227179819">+57 322 717 9819</a></p>
+              <p class="mb-0"><a href="tel:+573168686659">+57 316 868 6659</a></p>
+            </app-contact-info-item>
+
+            <!-- Email -->
+            <app-contact-info-item
+              iconClass="bi bi-envelope-fill"
+              title="Correo Electrónico"
+              iconVariant="orange">
+              <p class="mb-0">
+                <a href="mailto:Yumilefuncional@gmail.com">Yumilefuncional&#64;gmail.com</a>
+              </p>
+            </app-contact-info-item>
+
+            <!-- Working Hours -->
+            <app-contact-info-item
+              iconClass="bi bi-clock-fill"
+              title="Horario de Atención"
+              iconVariant="blue">
+              <p class="mb-0">
+                Lunes a Viernes: 8:00 AM - 6:00 PM<br>
+                Sábados: 7:00 AM - 1:00 PM
+              </p>
+            </app-contact-info-item>
+
+            <hr class="my-4">
+
+            <h4 class="h5 mb-3 text-center">Sígueme en mis redes</h4>
+
+            <!-- Social Group Molecule -->
+            <app-social-group></app-social-group>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map & Form Column -->
+      <div class="col-lg-7">
+        <!-- Map Embed -->
+        <div class="c-contact-section__map-wrapper mb-4 ratio ratio-16x9 rounded shadow-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.666359052981!2d-74.10815142502758!3d4.659303241938555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b8c3d8d67ed%3A0x6b80155b1f9f257!2sEdificio%20Elemento!5e0!3m2!1ses!2sco!4v1710700000000!5m2!1ses!2sco"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación consultorio Dra. Yumile Florián - Centro Empresarial Elemento">
+          </iframe>
+        </div>
+
+        <!-- Form Card
+        <div class="c-contact-section__form-card card border-0 shadow-sm">
+          <div class="card-body p-4 p-lg-5">
+            <h3 class="c-contact-section__card-title h4 fw-bold mb-4">Escríbeme un mensaje</h3>
+            <app-contact-form (formSubmit)="onFormSubmitted($event)"></app-contact-form>
+          </div>
+        </div>-->
+      </div>
+    </div>
+
+  </div>
+</section>
+

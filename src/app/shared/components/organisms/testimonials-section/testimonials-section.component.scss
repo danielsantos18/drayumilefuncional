@@ -1,0 +1,25 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-testimonials-section {
+  background-color: var(--bg);
+  transition: background-color $transition-fast;
+
+  &__widget-container {
+    min-height: 250px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Asegurar ancho completo para el widget de Google Reviews */
+    > div {
+      width: 100%;
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,19 @@
+<div class="c-condition-card text-center position-relative shadow-lg">
+  <div class="c-condition-card__icon-circle mx-auto">
+    <img [src]="condition.image" [alt]="condition.title" class="c-condition-card__icon-img" />
+  </div>
+
+  <div class="c-condition-card__content">
+    <h5
+      class="c-condition-card__title fw-bold mb-3 text-uppercase"
+      [class.c-condition-card__title--extra-margin]="extraMarginTitle">
+      {{ condition.title }}
+    </h5>
+    <p class="c-condition-card__description mb-0">{{ condition.description }}</p>
+  </div>
+
+  <div class="c-condition-card__flower">
+    <img [src]="flowerImage" alt="Decoración floral" class="c-condition-card__flower-img" />
+  </div>
+</div>
+

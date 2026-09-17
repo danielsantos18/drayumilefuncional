@@ -1,25 +1,27 @@
-// ✅ Importa Bootstrap correctamente usando la nueva sintaxis
+// ==============================================================================
+// GLOBAL STYLES & ARCHITECTURE
+// ==============================================================================
+
+// 1. Bootstrap
 @use "bootstrap/scss/bootstrap" as *;
 
-// 🎨 Tus variables y estilos personalizados
-@import "./app/assets/scss/variables";
-@import "./app/assets/scss/mixins";
+// 2. Custom Abstracts
+@use "./styles/variables" as *;
+@use "./styles/mixins" as *;
 
-/* Theme variables (usadas en componentes) */
+/* Theme variables */
 :root {
   --primary: #0d6efd;
   --bg: #ffffff;
   --nav-text: #ffffff;
-  --text: #000;
+  --text: #000000;
   --muted: #6c757d;
-  //--card-bg: #DFD0B8;
-  //--button-bg: rgb(241, 225, 177);
   --button-bg: rgb(130, 212, 242);
   --contact-button-bg: #cc7a00;
   --card-bg: rgb(130, 212, 242);
   --footer-bg: #ececec;
-  --accent: #fff;
-
+  --accent: #ffffff;
+  --header-bg: rgb(31, 141, 219);
 }
 
 /* Dark theme overrides */
@@ -29,41 +31,257 @@
   --nav-text: #ffffff;
   --text: #ffffff;
   --muted: #98a2b3;
-  //--card-bg: #DFD0B8;
   --contact-button-bg: #cc7a00;
-  //--button-bg: rgb(241, 225, 177);
   --button-bg: rgb(130, 212, 242);
-  --card-bg: rgb(75, 170, 231);
+  --card-bg: rgb(130, 212, 242);
   --footer-bg: #393E46;
-  --accent: #fff;
+  --accent: #ffffff;
+  --header-bg: rgb(31, 141, 219);
 }
 
-/* Use CSS variables */
+/* Base Body Styles - using overflow-x: clip to preserve position: sticky */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* Offset for fixed navbar on smooth scroll navigation */
+section[id] {
+  scroll-margin-top: 85px;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color .25s ease, color .25s ease;
+  font-family: $app-font-family-base;
+  overflow-x: clip;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Simple container card style */
-.app-card {
-  background-color: var(--card-bg);
-  border-radius: .6rem;
-  padding: 1.25rem;
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
-}
-
-/* Utility for primary buttons using variable */
+/* Utility for primary buttons using custom variable */
 .btn-primary-custom {
   background-color: var(--primary);
   border-color: var(--primary);
 }
 
-/* small responsive tweaks */
-.navbar-brand {
-  font-weight: 600;
-  letter-spacing: 0.2px;
+/* ==============================================================================
+   JOTFORM REVIEWS - SMOOTH MODAL ANIMATION & BACKDROP FIX
+   ============================================================================== */
+@keyframes jfBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes jfBackdropFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes jfModalSlideUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes jfModalSlideDown {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+  }
+}
+
+/* Ensure AOS animation does not trap position: fixed elements inside the section */
+.c-testimonials-section.aos-animate {
+  transform: none !important;
+}
+
+/* Ensure Jotform read-more modal is properly full-screen centered with dark scrim */
+.read-more-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.5rem !important;
+  margin: 0 !important;
+  cursor: pointer; /* Indicar visualmente que hacer clic afuera cierra el modal */
+  animation: jfBackdropFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+
+  &:after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    z-index: -1 !important;
+    animation: jfBackdropFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
+}
+
+.read-more-modal--container {
+  position: relative !important;
+  z-index: 1000000 !important;
+  max-width: 620px !important;
+  width: 100% !important;
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+  cursor: default; /* El contenido interior no tiene cursor pointer */
+  animation: jfModalSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.read-more-modal--close-button {
+  cursor: pointer !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+
+  &:hover {
+    transform: scale(1.1) !important;
+  }
+}
+
+/* Modal exit animation state */
+.read-more-modal.read-more-modal--closing {
+  animation: jfBackdropFadeOut 0.22s ease-in forwards !important;
+  pointer-events: none !important;
+
+  &:after {
+    animation: jfBackdropFadeOut 0.22s ease-in forwards !important;
+  }
+
+  .read-more-modal--container {
+    animation: jfModalSlideDown 0.22s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+  }
+}
+
+/* Modal dark theme support */
+.dark {
+  .read-more-modal--container {
+    background: #242b35 !important;
+    background-color: #242b35 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .read-more-modal--text,
+  .read-more-modal--content p {
+    color: #e2e8f0 !important;
+  }
+
+  .read-more-modal--close-button {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25) !important;
+    }
+  }
+
+  /* Jotform Widget & Cards dark theme support */
+  .jf-reviews-card {
+    background: #242b35 !important;
+    background-color: #242b35 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+
+    p, span, div {
+      color: #e2e8f0 !important;
+    }
+
+    /* Nombre del autor de la reseña */
+    h3, h4, strong {
+      color: #ffffff !important;
+    }
+
+    /* Enlace o botón de Leer más */
+    button {
+      color: rgb(130, 212, 242) !important;
+    }
+  }
+
+  /* Flechas de navegación del carrusel */
+  .jf-reviews-slider-arrow {
+    background: #393E46 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+
+    svg {
+      fill: #ffffff !important;
+      stroke: #ffffff !important;
+    }
+  }
+
+  /* Tarjeta superior del encabezado ("Testimonios de clientes") */
+  .jf-reviews-header-card {
+    background: #242b35 !important;
+    background-color: #242b35 !important;
+    background-image: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
+
+    /* Título "Testimonios de clientes" */
+    .jf-reviews-header-title {
+      color: #ffffff !important;
+    }
+
+    /* Calificación promedio (ej. 5) y cantidad de opiniones (ej. (12)) */
+    .jf-reviews-score {
+      color: #ffffff !important;
+    }
+
+    .jf-reviews-count {
+      color: #cbd5e1 !important;
+    }
+
+    span, p {
+      color: #e2e8f0;
+    }
+  }
+
+  /* Puntos indicadores del carrusel (paginación) */
+  .jf-reviews-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+
+    &.is-active {
+      background-color: #3b82f6 !important;
+    }
+  }
 }
 
 
-/* You can add global styles to this file, and also import other style files */
+
+

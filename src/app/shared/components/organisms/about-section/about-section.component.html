@@ -1,0 +1,70 @@
+<section id="about-us" class="c-about py-3 py-md-5" data-aos="fade-up">
+  <div class="container my-5">
+    <div class="row align-items-center">
+
+      <!-- Doctor Image Column -->
+      <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+        <div class="c-about__photo-wrapper position-relative rounded overflow-hidden shadow-lg">
+          <img
+            src="images/perfil1.jpeg"
+            class="c-about__photo img-fluid rounded"
+            alt="Dra. Yumile Florián Páez" />
+        </div>
+      </div>
+
+      <!-- Doctor Bio Column -->
+      <div class="col-lg-7 ps-lg-5" data-aos="fade-left">
+        <h2 class="c-about__title display-6 fw-bold mb-3">🌿 Dra. Yumile Florián Páez</h2>
+        <h5 class="c-about__subtitle mb-4">Medicina Funcional y Familiar</h5>
+
+        <p class="c-about__paragraph">
+          Soy la <strong>Dra. Yumile Florián Páez</strong>, médica especialista en Medicina Familiar con cerca de 20
+          años de experiencia clínica acompañando procesos de salud y transformación.
+        </p>
+
+        <p class="c-about__paragraph">
+          Mi camino hacia la <strong>Medicina Funcional e Integrativa</strong> nació de una experiencia personal; como
+          paciente comprendí que la medicina tradicional, aunque vital, no siempre es suficiente. Esa vivencia, sumada a
+          mi deseo de ofrecer a mis pacientes acciones efectivas, se convirtió en el motor que me impulsó a explorar
+          este fascinante enfoque que integra ciencia, humanidad y propósito.
+        </p>
+
+        <p class="c-about__paragraph">
+          Hoy entiendo que la verdadera salud no es solo la ausencia de enfermedad, sino un estado de bienestar,
+          equilibrio y sincronía en todas las dimensiones del ser: física, mental, emocional y espiritual.
+        </p>
+
+        <p class="c-about__paragraph mb-4">
+          Mi propósito es ayudarte a <strong>recuperar tu energía, prevenir enfermedades y restaurar tu
+            equilibrio</strong>, brindándote herramientas prácticas y sostenibles que te guíen hacia una longevidad
+          saludable y consciente.
+        </p>
+
+        <div class="mt-4">
+          <app-button
+            variant="bubble"
+            href="#services"
+            (btnClick)="scrollToServices($event)"
+            label="Ver servicios">
+          </app-button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Academic Credentials Gallery -->
+    <div class="c-about__academic text-center mt-5 pt-4" data-aos="fade-left">
+      <h4 class="c-about__academic-heading fw-bold mb-4">🔬 Formación Académica</h4>
+
+      <div class="c-about__academic-gallery">
+        <app-academic-card
+          *ngFor="let cred of academicCredentials"
+          [image]="cred.image"
+          [title]="cred.title"
+          [delay]="cred.delay"
+          [isSanMartin]="cred.isSanMartin || false">
+        </app-academic-card>
+      </div>
+    </div>
+  </div>
+</section>
+

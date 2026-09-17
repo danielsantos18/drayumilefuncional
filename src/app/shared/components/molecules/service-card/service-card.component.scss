@@ -1,0 +1,92 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+$card-hover-duration: 0.3s;
+$card-hover-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+
+.c-service-card {
+  border-radius: 16px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #b9e5ff 12%,
+    #4aaaff 80%
+  );
+  border: 1px solid rgba(25, 135, 84, 0.08);
+  transition: transform $card-hover-duration $card-hover-ease,
+              box-shadow $card-hover-duration $card-hover-ease;
+  text-align: center;
+  cursor: default;
+  will-change: transform, box-shadow;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+
+    .c-service-card__icon-wrapper {
+      background-color: var(--accent, #198754);
+      color: #ffffff;
+      transform: scale(1.1);
+
+      .c-service-card__icon {
+        transform: rotate(10deg);
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    width: 75px;
+    height: 75px;
+    background-color: #ffffff;
+    border-radius: $radius-circle;
+    font-size: 2rem;
+    color: var(--accent, #198754);
+    transition: transform $card-hover-duration $card-hover-ease,
+                background-color $card-hover-duration $card-hover-ease,
+                color $card-hover-duration $card-hover-ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+  }
+
+  &__icon {
+    display: inline-block;
+    transition: transform $card-hover-duration $card-hover-ease;
+    will-change: transform;
+  }
+
+  &__title {
+    color: #cc7a00;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__description {
+    color: #000000;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  &__details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #000000;
+    text-align: left;
+  }
+
+  &__detail-item {
+    padding: 0.3rem 0;
+    position: relative;
+    font-size: 0.95rem;
+    padding-left: 1.5rem;
+
+    &::before {
+      content: "🌿";
+      position: absolute;
+      left: 0;
+      color: #198754;
+      font-size: 0.95rem;
+    }
+  }
+}
+

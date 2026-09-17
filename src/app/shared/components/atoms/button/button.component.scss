@@ -1,0 +1,154 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: $font-weight-semibold;
+  transition: all $transition-fast;
+  position: relative;
+  user-select: none;
+  text-align: center;
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &__label {
+    position: relative;
+    z-index: 1;
+  }
+
+  // --- Variant: CTA (Navbar 'Agenda tu cita') ---
+  &--cta {
+    padding: 10px 20px;
+    border-radius: $radius-sm;
+    border: 1px solid #e2c15c;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    width: 100%; // Mobile-First: full width in mobile menu
+
+    @include respond-to('lg') {
+      width: auto;
+    }
+
+    &:hover {
+      background: #e2c15c;
+      color: #000;
+      box-shadow: 0 0 30px 5px #e2c15c;
+    }
+
+    &:hover::before {
+      animation: sh02 0.5s 0s linear;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 86%;
+      position: absolute;
+      top: 7%;
+      left: 0;
+      opacity: 0;
+      background: var(--bg);
+      box-shadow: 0 0 50px 30px #fff;
+      transform: skewX(-20deg);
+    }
+
+    &:active {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  // --- Variant: Bubble (About section 'Ver servicios') ---
+  &--bubble {
+    padding: 10px 22px;
+    border-radius: $radius-sm;
+    color: #000;
+    background-color: var(--button-bg);
+    overflow: visible;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      width: 150%;
+      left: 50%;
+      height: 100%;
+      transform: translateX(-50%);
+      z-index: 0;
+      background-repeat: no-repeat;
+    }
+
+    &:hover:before {
+      top: -70%;
+      background-image: radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, var(--button-bg) 20%, transparent 30%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--button-bg) 15%, transparent 20%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--button-bg) 20%, transparent 20%);
+      background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+        10% 10%, 18% 18%;
+      background-position: 50% 120%;
+      animation: greentopBubbles 0.6s ease;
+    }
+
+    &:hover:after {
+      bottom: -70%;
+      background-image: radial-gradient(circle, var(--card-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--card-bg) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--card-bg) 15%, transparent 20%),
+        radial-gradient(circle, var(--card-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--card-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--card-bg) 20%, transparent 20%),
+        radial-gradient(circle, var(--card-bg) 20%, transparent 20%);
+      background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+      background-position: 50% 0%;
+      animation: greenbottomBubbles 0.6s ease;
+    }
+  }
+
+  // --- Variant: Primary (Form submit) ---
+  &--primary {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: $radius-sm;
+
+    &:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+  }
+
+  // --- Variant: Outline (e.g. theme toggle / secondary actions) ---
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--muted);
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: $radius-sm;
+
+    &:hover {
+      background-color: rgba(108, 117, 125, 0.15);
+    }
+  }
+}
+

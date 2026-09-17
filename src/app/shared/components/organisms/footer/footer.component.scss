@@ -1,0 +1,54 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-footer {
+  background: var(--footer-bg);
+  color: var(--text) !important;
+  text-align: center;
+
+  @include respond-to('md') {
+    text-align: left;
+  }
+
+  &__text,
+  &__copyright {
+    color: var(--text);
+  }
+
+  &__link {
+    color: var(--text);
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: #00d084;
+    }
+  }
+
+  &__social-link {
+    color: var(--text);
+    transition: color $transition-fast;
+    font-size: 1.5rem;
+
+    @include respond-to('md') {
+      font-size: 1.35rem;
+    }
+
+    &:hover {
+      color: #00d084;
+    }
+  }
+
+  &__socials {
+    justify-content: center;
+
+    @include respond-to('md') {
+      justify-content: flex-start;
+    }
+  }
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+

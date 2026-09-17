@@ -1,0 +1,72 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  &__carousel {
+    height: 100%;
+  }
+
+  &__inner {
+    height: 100%;
+  }
+
+  &__item {
+    height: 100vh;
+    min-height: 500px;
+    position: relative;
+  }
+
+  &__video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    filter: brightness(85%);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+
+  &__caption {
+    bottom: 15%;
+    z-index: 2;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    @include respond-to('md') {
+      bottom: 20%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+
+    @include respond-to('md') {
+      font-size: 3rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.15rem;
+    font-weight: $font-weight-regular;
+    line-height: 1.4;
+
+    @include respond-to('md') {
+      font-size: 1.5rem;
+    }
+  }
+}
+

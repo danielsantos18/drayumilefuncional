@@ -1,0 +1,48 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-about {
+  &__photo-wrapper {
+    height: 100%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title,
+  &__subtitle {
+    color: var(--text);
+  }
+
+  &__paragraph {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  &__academic {
+    &-heading {
+      color: var(--text);
+    }
+
+    &-gallery {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+
+      @include respond-to('lg') {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,11 @@
+<div class="c-service-card h-100 p-4 shadow-sm">
+  <div class="c-service-card__icon-wrapper mx-auto mb-3">
+    <i [class]="service.icon" class="c-service-card__icon"></i>
+  </div>
+  <h5 class="c-service-card__title fw-bold text-center mb-3">{{ service.title }}</h5>
+  <h6 class="c-service-card__description text-center">{{ service.description }}</h6>
+  <ul class="c-service-card__details mt-3" *ngIf="service.details?.length">
+    <li *ngFor="let item of service.details" class="c-service-card__detail-item">{{ item }}</li>
+  </ul>
+</div>
+

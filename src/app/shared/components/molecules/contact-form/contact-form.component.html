@@ -1,0 +1,77 @@
+<form class="c-contact-form" (ngSubmit)="onSubmit()">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="contact-name" class="c-contact-form__label form-label">Nombre completo*</label>
+      <input
+        type="text"
+        class="c-contact-form__input form-control"
+        id="contact-name"
+        name="name"
+        [(ngModel)]="formData.name"
+        required>
+    </div>
+
+    <div class="col-md-6">
+      <label for="contact-email" class="c-contact-form__label form-label">Correo electrónico*</label>
+      <input
+        type="email"
+        class="c-contact-form__input form-control"
+        id="contact-email"
+        name="email"
+        [(ngModel)]="formData.email"
+        required>
+    </div>
+
+    <div class="col-12">
+      <label for="contact-subject" class="c-contact-form__label form-label">Asunto*</label>
+      <select
+        class="c-contact-form__select form-select"
+        id="contact-subject"
+        name="subject"
+        [(ngModel)]="formData.subject"
+        required>
+        <option value="" disabled>Selecciona una opción</option>
+        <option value="request">Consultas</option>
+        <option value="help">Ayuda</option>
+        <option value="pqr">Quejas</option>
+        <option value="other">Otro</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="contact-message" class="c-contact-form__label form-label">Mensaje*</label>
+      <textarea
+        class="c-contact-form__textarea form-control"
+        id="contact-message"
+        name="message"
+        rows="4"
+        [(ngModel)]="formData.message"
+        required></textarea>
+    </div>
+
+    <div class="col-12">
+      <div class="c-contact-form__check form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="contact-privacy"
+          name="privacy"
+          [(ngModel)]="formData.privacy"
+          required>
+        <label class="form-check-label" for="contact-privacy">
+          Acepto la <a href="#" class="text-success">Política de Privacidad</a>
+        </label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <app-button
+        type="submit"
+        variant="primary"
+        label="Enviar mensaje"
+        customClass="px-4">
+      </app-button>
+    </div>
+  </div>
+</form>
+

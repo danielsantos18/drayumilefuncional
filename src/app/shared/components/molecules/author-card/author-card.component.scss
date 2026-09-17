@@ -1,0 +1,73 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+:host {
+  display: block;
+  position: static;
+  margin-bottom: 2rem;
+
+  @include respond-to('lg') {
+    position: sticky;
+    top: 100px;
+    z-index: 10;
+    margin-bottom: 0;
+  }
+}
+
+.c-author-card {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  border-radius: 16px;
+  transition: background-color $transition-fast, color $transition-fast;
+
+  &__body {
+    background-color: transparent !important;
+    color: var(--text) !important;
+  }
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: $radius-circle;
+    border: 3px solid var(--primary);
+  }
+
+  &__name {
+    color: var(--text) !important;
+    transition: color $transition-fast;
+  }
+
+  &__role {
+    color: var(--muted) !important;
+    font-weight: $font-weight-medium;
+    transition: color $transition-fast;
+  }
+
+  &__bio {
+    color: var(--text) !important;
+    line-height: 1.5;
+    transition: color $transition-fast;
+  }
+
+  &__social-link {
+    text-decoration: none;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    &--instagram {
+      color: #e1306c;
+    }
+
+    &--whatsapp {
+      color: #25d366;
+    }
+
+    &--website {
+      color: #ffc107;
+    }
+  }
+}

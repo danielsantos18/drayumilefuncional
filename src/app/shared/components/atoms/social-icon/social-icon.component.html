@@ -1,0 +1,10 @@
+<a
+  [href]="href"
+  [target]="target"
+  rel="noopener noreferrer"
+  class="c-social-icon"
+  [style.--color]="color">
+  <i class="c-social-icon__glyph" [ngClass]="iconClass"></i>
+  <span *ngIf="tooltipText" class="c-social-icon__tooltip">{{ tooltipText }}</span>
+</a>
+

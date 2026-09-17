@@ -1,0 +1,72 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.c-social-icon {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: $radius-circle;
+  background: var(--footer-bg);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: 2px solid var(--color, #0077b5);
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: var(--color, #0077b5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+    .c-social-icon__glyph {
+      color: #ffffff;
+    }
+
+    .c-social-icon__tooltip {
+      visibility: visible;
+      opacity: 1;
+      top: -55px;
+    }
+  }
+
+  &__glyph {
+    font-size: 1.3rem;
+    color: var(--color, #0077b5);
+    transition: all $transition-fast;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    background-color: var(--color, #0077b5);
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    visibility: hidden;
+    transition: all $transition-fast;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: $z-index-tooltip;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: var(--color, #0077b5);
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+}
+

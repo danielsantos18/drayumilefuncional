@@ -1,0 +1,10 @@
+<div class="c-social-group">
+  <app-social-icon
+    *ngFor="let net of networks"
+    [href]="net.url"
+    [iconClass]="net.icon"
+    [tooltipText]="net.name"
+    [color]="net.color">
+  </app-social-icon>
+</div>
+

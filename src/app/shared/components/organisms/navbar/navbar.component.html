@@ -1,0 +1,95 @@
+<nav id="nav" class="c-navbar navbar navbar-expand-lg navbar-light fixed-top px-md-5">
+  <div class="c-navbar__container container-fluid">
+
+    <!-- Brand Logo Atom -->
+    <div class="c-navbar__brand">
+      <app-logo></app-logo>
+    </div>
+
+    <!-- Toggler Button -->
+    <button
+      class="c-navbar__toggler navbar-toggler bg-light"
+      #toggler
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Menu -->
+    <div class="c-navbar__collapse collapse navbar-collapse" id="navbarContent" #navbarContent>
+      <ul class="c-navbar__nav navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link active"
+            aria-current="page"
+            (click)="goToSection('home')">
+            Inicio
+          </a>
+        </li>
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link"
+            (click)="goToSection('about-us')">
+            Sobre mi
+          </a>
+        </li>
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link"
+            (click)="goToSection('services')">
+            Servicios
+          </a>
+        </li>
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link"
+            (click)="goToSection('testimonials')">
+            Testimonios
+          </a>
+        </li>
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link"
+            (click)="goToSection('contact')">
+            Contacto
+          </a>
+        </li>
+
+        <li class="c-navbar__item nav-item me-lg-3">
+          <a
+            class="c-navbar__link nav-link"
+            routerLink="/blog"
+            (click)="closeOnLinkClick()">
+            Mi blog
+          </a>
+        </li>
+
+        <!-- CTA Button Atom -->
+        <li class="c-navbar__item nav-item me-lg-3 mt-3 mt-lg-0">
+          <app-button
+            variant="cta"
+            href="https://wa.me/573227179819"
+            target="_blank"
+            label="Agenda tu cita"
+            (btnClick)="closeOnLinkClick()">
+          </app-button>
+        </li>
+
+        <!-- Theme Toggle Molecule -->
+        <li class="c-navbar__item nav-item ps-lg-2">
+          <app-theme-toggle></app-theme-toggle>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

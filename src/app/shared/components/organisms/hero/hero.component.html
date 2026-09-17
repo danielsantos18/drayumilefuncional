@@ -1,0 +1,23 @@
+<section id="home" class="c-hero">
+  <div class="c-hero__inner">
+    <div class="c-hero__item">
+      <div class="c-hero__overlay"></div>
+      <video
+        #heroVideo
+        class="c-hero__video d-block w-100"
+        autoplay
+        muted
+        [muted]="true"
+        loop
+        playsinline
+        preload="auto"
+        alt="Atención médica personalizada">
+        <source [src]="videoSrc" type="video/mp4" />
+      </video>
+      <div class="c-hero__caption carousel-caption text-start">
+        <h1 class="c-hero__title display-5 fw-bold text-light">{{ title }}</h1>
+        <h4 class="c-hero__subtitle text-light">{{ subtitle }}</h4>
+      </div>
+    </div>
+  </div>
+</section>

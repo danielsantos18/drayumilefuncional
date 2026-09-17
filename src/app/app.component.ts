@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './core/components/navbar/navbar.component';
-import { FooterComponent } from './core/components/footer/footer.component';
+import { NavbarComponent } from './shared/components/organisms/navbar/navbar.component';
+import { FooterComponent } from './shared/components/organisms/footer/footer.component';
 import AOS from 'aos';
 
 @Component({
@@ -13,6 +13,7 @@ import AOS from 'aos';
 })
 export class AppComponent implements OnInit {
   title = 'drayumilefuncional';
+
   ngOnInit(): void {
     AOS.init({
       duration: 700,
