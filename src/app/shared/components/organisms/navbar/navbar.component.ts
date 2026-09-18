@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, OnDestroy, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LogoComponent } from '../../atoms/logo/logo.component';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { ThemeToggleComponent } from '../../molecules/theme-toggle/theme-toggle.component';
@@ -12,20 +12,41 @@ import { ThemeToggleComponent } from '../../molecules/theme-toggle/theme-toggle.
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnDestroy {
   isMenuOpen = false;
 
   constructor(
     public router: Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  ngOnDestroy(): void {
+    this.setScrollLock(false);
+  }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+    this.setScrollLock(this.isMenuOpen);
   }
 
   closeMenu(): void {
-    this.isMenuOpen = false;
+    if (this.isMenuOpen) {
+      this.isMenuOpen = false;
+      this.setScrollLock(false);
+    }
+  }
+
+  private setScrollLock(locked: boolean): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (locked) {
+      this.renderer.addClass(document.body, 'u-no-scroll');
+      this.renderer.addClass(document.documentElement, 'u-no-scroll');
+    } else {
+      this.renderer.removeClass(document.body, 'u-no-scroll');
+      this.renderer.removeClass(document.documentElement, 'u-no-scroll');
+    }
   }
 
   @HostListener('document:click', ['$event'])

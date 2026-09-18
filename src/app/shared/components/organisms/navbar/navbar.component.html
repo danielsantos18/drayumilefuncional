@@ -23,7 +23,8 @@
     <div
       class="c-navbar__backdrop"
       [class.c-navbar__backdrop--visible]="isMenuOpen"
-      (click)="closeMenu()">
+      (click)="closeMenu()"
+      (touchmove)="$event.preventDefault()">
     </div>
 
     <!-- Collapsible Menu -->

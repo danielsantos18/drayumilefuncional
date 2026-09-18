@@ -62,6 +62,13 @@ body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+/* Bloqueo de desplazamiento de fondo cuando el menú móvil o modales están abiertos */
+.u-no-scroll {
+  overflow: hidden !important;
+  touch-action: none !important;
+  height: 100% !important;
+}
+
 /* Transición suave global entre tema claro y tema oscuro */
 section,
 article,
