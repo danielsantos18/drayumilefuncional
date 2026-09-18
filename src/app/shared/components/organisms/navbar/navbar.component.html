@@ -23,8 +23,7 @@
     <div
       class="c-navbar__backdrop"
       [class.c-navbar__backdrop--visible]="isMenuOpen"
-      (click)="closeMenu()"
-      (touchmove)="$event.preventDefault()">
+      (click)="closeMenu()">
     </div>
 
     <!-- Collapsible Menu -->
@@ -37,7 +36,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            (click)="goToSection('home')">
+            role="button"
+            tabindex="0"
+            (click)="goToSection('home', $event)"
+            (keydown.enter)="goToSection('home', $event)">
             <span>Inicio</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>
@@ -46,7 +48,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            (click)="goToSection('about-us')">
+            role="button"
+            tabindex="0"
+            (click)="goToSection('about-us', $event)"
+            (keydown.enter)="goToSection('about-us', $event)">
             <span>Sobre mi</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>
@@ -55,7 +60,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            (click)="goToSection('services')">
+            role="button"
+            tabindex="0"
+            (click)="goToSection('services', $event)"
+            (keydown.enter)="goToSection('services', $event)">
             <span>Servicios</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>
@@ -64,7 +72,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            (click)="goToSection('testimonials')">
+            role="button"
+            tabindex="0"
+            (click)="goToSection('testimonials', $event)"
+            (keydown.enter)="goToSection('testimonials', $event)">
             <span>Testimonios</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>
@@ -73,7 +84,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            (click)="goToSection('contact')">
+            role="button"
+            tabindex="0"
+            (click)="goToSection('contact', $event)"
+            (keydown.enter)="goToSection('contact', $event)">
             <span>Contacto</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>
@@ -82,8 +96,10 @@
         <li class="c-navbar__item nav-item me-lg-3">
           <a
             class="c-navbar__link nav-link"
-            routerLink="/blog"
-            (click)="closeOnLinkClick()">
+            role="button"
+            tabindex="0"
+            (click)="navigateToBlog($event)"
+            (keydown.enter)="navigateToBlog($event)">
             <span>Mi blog</span>
             <span class="c-navbar__link-arrow">›</span>
           </a>

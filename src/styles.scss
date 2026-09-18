@@ -65,8 +65,7 @@ body {
 /* Bloqueo de desplazamiento de fondo cuando el menú móvil o modales están abiertos */
 .u-no-scroll {
   overflow: hidden !important;
-  touch-action: none !important;
-  height: 100% !important;
+  overscroll-behavior: none;
 }
 
 /* Transición suave global entre tema claro y tema oscuro */
