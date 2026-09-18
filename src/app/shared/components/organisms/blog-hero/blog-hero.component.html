@@ -1,4 +1,4 @@
-<section class="c-blog-hero text-white d-flex align-items-center justify-content-center position-relative">
+<section class="c-blog-hero position-relative">
   <div class="c-blog-hero__media-container">
     <!-- Video 1: blog-animado.mp4 -->
     <video
@@ -6,6 +6,7 @@
       [src]="videoList[0]"
       autoplay
       muted
+      [muted]="true"
       playsinline
       preload="auto"
       class="c-blog-hero__video"
@@ -13,26 +14,17 @@
       (ended)="onVideoEnded(0)">
     </video>
 
-    <!-- Video 2: blog-animado2.mp4 -->
+    <!-- Video 2: blog-animado4.mp4 -->
     <video
       #video2
       [src]="videoList[1]"
       muted
+      [muted]="true"
       playsinline
       preload="auto"
-      class="c-blog-hero__video c-blog-hero__video--stacked"
+      class="c-blog-hero__video"
       [class.c-blog-hero__video--active]="activeVideoIndex === 1"
       (ended)="onVideoEnded(1)">
     </video>
   </div>
-
-  <div class="c-blog-hero__overlay"></div>
 </section>
-
-<div class="c-blog-hero__content text-center">
-  <h1 class="c-blog-hero__title display-5 fw-bold mt-4">{{ title }}</h1>
-  <p class="c-blog-hero__lead lead">{{ subtitle }}</p>
-  <p class="c-blog-hero__meta small">
-    Por <strong>{{ author }}</strong> · <time>{{ year }}</time>
-  </p>
-</div>

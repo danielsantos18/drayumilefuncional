@@ -19,7 +19,7 @@ export class BlogHeroComponent implements AfterViewInit {
 
   videoList: string[] = [
     'images/blog-animado.mp4',
-    'images/blog-animado2.mp4'
+    'images/blog-animado4.mp4'
   ];
 
   activeVideoIndex = 0;
@@ -36,7 +36,30 @@ export class BlogHeroComponent implements AfterViewInit {
       v1.muted = true;
       v1.defaultMuted = true;
       v1.playsInline = true;
-      v1.play().catch(() => {});
+
+      const playAttempt = () => {
+        const promise = v1.play();
+        if (promise !== undefined) {
+          promise.catch(() => {
+            const onInteract = () => {
+              v1.play().catch(() => {});
+              window.removeEventListener('click', onInteract);
+              window.removeEventListener('touchstart', onInteract);
+              window.removeEventListener('scroll', onInteract);
+            };
+            window.addEventListener('click', onInteract, { once: true, passive: true });
+            window.addEventListener('touchstart', onInteract, { once: true, passive: true });
+            window.addEventListener('scroll', onInteract, { once: true, passive: true });
+          });
+        }
+      };
+
+      if (v1.readyState >= 2) {
+        playAttempt();
+      } else {
+        v1.addEventListener('canplay', () => playAttempt(), { once: true });
+        v1.addEventListener('loadeddata', () => playAttempt(), { once: true });
+      }
     }
 
     if (v2) {
@@ -53,14 +76,14 @@ export class BlogHeroComponent implements AfterViewInit {
     const v2 = this.video2Ref?.nativeElement;
 
     if (endedIndex === 0) {
-      // Pasar a video 2
+      // Pasar a video 2 (blog-animado3.mp4)
       this.activeVideoIndex = 1;
       if (v2) {
         v2.currentTime = 0;
         v2.play().catch(() => {});
       }
     } else {
-      // Repetir y volver a video 1
+      // Repetir y volver a video 1 (blog-animado.mp4)
       this.activeVideoIndex = 0;
       if (v1) {
         v1.currentTime = 0;

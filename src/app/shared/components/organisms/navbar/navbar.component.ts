@@ -13,34 +13,39 @@ import { ThemeToggleComponent } from '../../molecules/theme-toggle/theme-toggle.
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  @ViewChild('navbarContent', { static: false }) navbarContent!: ElementRef;
-  @ViewChild('toggler', { static: false }) toggler!: ElementRef;
+  isMenuOpen = false;
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    private elementRef: ElementRef
+  ) {}
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
 
   @HostListener('document:click', ['$event'])
   handleClick(event: Event): void {
-    const nav = this.navbarContent?.nativeElement;
-    const toggleBtn = this.toggler?.nativeElement;
+    if (!this.isMenuOpen) return;
+    const target = event.target as HTMLElement;
+    if (!this.elementRef.nativeElement.contains(target)) {
+      this.closeMenu();
+    }
+  }
 
-    if (!nav || !toggleBtn) return;
-
-    const clickedInsideNav = nav.contains(event.target);
-    const clickedToggler = toggleBtn.contains(event.target);
-    const isOpen = nav.classList.contains('show');
-
-    if (isOpen && !clickedInsideNav && !clickedToggler) {
-      toggleBtn.click();
+  @HostListener('window:resize')
+  onResize(): void {
+    if (window.innerWidth >= 992 && this.isMenuOpen) {
+      this.closeMenu();
     }
   }
 
   closeOnLinkClick(): void {
-    const nav = this.navbarContent?.nativeElement;
-    const toggleBtn = this.toggler?.nativeElement;
-
-    if (nav && nav.classList.contains('show')) {
-      toggleBtn.click();
-    }
+    this.closeMenu();
   }
 
   goToSection(sectionId: string): void {

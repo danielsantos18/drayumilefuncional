@@ -1,4 +1,4 @@
-<nav id="nav" class="c-navbar navbar navbar-expand-lg navbar-light fixed-top px-md-5">
+<nav id="nav" class="c-navbar navbar navbar-expand-lg fixed-top px-md-5">
   <div class="c-navbar__container container-fluid">
 
     <!-- Brand Logo Atom -->
@@ -6,29 +6,39 @@
       <app-logo></app-logo>
     </div>
 
-    <!-- Toggler Button -->
+    <!-- Modern Animated Toggler Button -->
     <button
-      class="c-navbar__toggler navbar-toggler bg-light"
-      #toggler
+      class="c-navbar__toggler"
+      [class.c-navbar__toggler--open]="isMenuOpen"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarContent"
-      aria-controls="navbarContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      (click)="toggleMenu()"
+      aria-label="Abrir o cerrar menú de navegación"
+      [attr.aria-expanded]="isMenuOpen">
+      <span class="c-navbar__toggler-line c-navbar__toggler-line--top"></span>
+      <span class="c-navbar__toggler-line c-navbar__toggler-line--middle"></span>
+      <span class="c-navbar__toggler-line c-navbar__toggler-line--bottom"></span>
     </button>
 
+    <!-- Backdrop Overlay for Mobile -->
+    <div
+      class="c-navbar__backdrop"
+      [class.c-navbar__backdrop--visible]="isMenuOpen"
+      (click)="closeMenu()">
+    </div>
+
     <!-- Collapsible Menu -->
-    <div class="c-navbar__collapse collapse navbar-collapse" id="navbarContent" #navbarContent>
-      <ul class="c-navbar__nav navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+    <div
+      class="c-navbar__collapse"
+      [class.c-navbar__collapse--open]="isMenuOpen"
+      id="navbarContent">
+      <ul class="c-navbar__nav navbar-nav ms-auto mb-0 align-items-lg-center">
 
         <li class="c-navbar__item nav-item me-lg-3">
           <a
-            class="c-navbar__link nav-link active"
-            aria-current="page"
+            class="c-navbar__link nav-link"
             (click)="goToSection('home')">
-            Inicio
+            <span>Inicio</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
@@ -36,7 +46,8 @@
           <a
             class="c-navbar__link nav-link"
             (click)="goToSection('about-us')">
-            Sobre mi
+            <span>Sobre mi</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
@@ -44,7 +55,8 @@
           <a
             class="c-navbar__link nav-link"
             (click)="goToSection('services')">
-            Servicios
+            <span>Servicios</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
@@ -52,7 +64,8 @@
           <a
             class="c-navbar__link nav-link"
             (click)="goToSection('testimonials')">
-            Testimonios
+            <span>Testimonios</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
@@ -60,7 +73,8 @@
           <a
             class="c-navbar__link nav-link"
             (click)="goToSection('contact')">
-            Contacto
+            <span>Contacto</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
@@ -69,25 +83,33 @@
             class="c-navbar__link nav-link"
             routerLink="/blog"
             (click)="closeOnLinkClick()">
-            Mi blog
+            <span>Mi blog</span>
+            <span class="c-navbar__link-arrow">›</span>
           </a>
         </li>
 
-        <!-- CTA Button Atom -->
-        <li class="c-navbar__item nav-item me-lg-3 mt-3 mt-lg-0">
-          <app-button
-            variant="cta"
-            href="https://wa.me/573227179819"
-            target="_blank"
-            label="Agenda tu cita"
-            (btnClick)="closeOnLinkClick()">
-          </app-button>
-        </li>
+        <!-- Separator on mobile -->
+        <hr class="c-navbar__divider">
 
-        <!-- Theme Toggle Molecule -->
-        <li class="c-navbar__item nav-item ps-lg-2">
-          <app-theme-toggle></app-theme-toggle>
-        </li>
+        <!-- Actions Container (CTA + Theme) -->
+        <div class="c-navbar__actions">
+          <!-- CTA Button Atom -->
+          <li class="c-navbar__item c-navbar__cta-wrapper nav-item me-lg-3">
+            <app-button
+              variant="cta"
+              href="https://wa.me/573227179819"
+              target="_blank"
+              label="Agenda tu cita"
+              (btnClick)="closeOnLinkClick()">
+            </app-button>
+          </li>
+
+          <!-- Theme Toggle Molecule -->
+          <li class="c-navbar__item c-navbar__theme-wrapper nav-item ps-lg-2">
+            <span class="c-navbar__theme-wrapper-label">Modo de pantalla</span>
+            <app-theme-toggle></app-theme-toggle>
+          </li>
+        </div>
 
       </ul>
     </div>

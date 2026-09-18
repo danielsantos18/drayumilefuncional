@@ -11,6 +11,27 @@
     text-align: left;
   }
 
+  &__brand {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
   &__text,
   &__copyright {
     color: var(--text);
